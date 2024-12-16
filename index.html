@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editor de Memes</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header id="header">
+    <h1 id="editor-title">Editor de Memes</h1>
+  </header>
+
+  <section id="options-bar">
+    <button id="btn-imagen" type="button">Imagen</button>
+    <button id="btn-texto" type="button">Texto</button>
+    <button id="btn-modo-oscuro" type="button">Modo Oscuro</button>
+  </section>
+  
+  <main id="main-content">
+    <!--contenedor de imagen-->
+    <div id="image-container" class="image-container">
+      <img id="loaded-image" src="" alt="Imagen cargada" style="display: none;">
+      <div id="top-text" style="position: absolute; top: 10px; width: 100%; color: white; pointer-events: none;"></div>
+      <div id="bottom-text" style="position: absolute; bottom: 10px; width: 100%; color: white; pointer-events: none;"></div>
+    </div>
+
+    <!-- Barra de opciones -->
+    <div class="conteiner-tools">  
+      <aside id="tools-text" style="display: none;">
+        <div id="panel-texto" class="tool-panel">
+            <h2>Opciones de Texto</h2>
+                  <!-- Texto Superior -->
+            <label for="textoTop">Texto Superior:</label>
+            <input id="textoTop" type="text" placeholder="Escribe aquí">
+              <!-- Texto Inferior -->
+            <label for="textoBottom">Texto Inferior:</label>
+            <input id="textoBottom" type="text" placeholder="Escribe aquí">
+
+              <!-- Tipo de Fuente -->
+            <label for="font-family">Tipo de Fuente:</label>
+            <select id="font-family">
+                <option value="Arial">Arial</option>
+                <option value="Verdana">Verdana</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Courier New">Courier New</option>
+                <option value="Georgia">Georgia</option>
+            </select>
+      
+              <!-- Tamaño de Fuente -->
+            <label for="font-size">Tamaño de Fuente:</label>
+            <input id="font-size" type="range" min="10" max="100" value="20">
+      
+              <!-- Alineación -->
+            <label>Alineación del Texto:</label>
+            <select id="alignText">
+                <option value="left">Izquierda</option>
+                <option value="center">Centro</option>
+                <option value="right">Derecha</option>
+            </select>
+      
+              <!-- Color de Texto -->
+            <label for="colorText">Color del Texto:</label>
+            <input id="colorText" type="color">
+      
+              <!-- Color de Fondo -->
+            <label for="colorBackground">Color de Fondo:</label>
+            <input id="colorBackground" type="color">
+            <button id="noBackground" type="button">Sin Fondo</button>
+      
+              <!-- Contorno de Texto -->
+            <label for="outline-width">Contorno:</label>
+            <input id="outline-width" type="range" min="0" max="10" value="0">
+      
+              <!-- Espaciado -->
+            <label for="letter-spacing">Espaciado de Letras:</label>
+            <input id="letter-spacing" type="range" min="0" max="20" value="1">
+            <label for="line-height">Altura de Línea:</label>
+            <input id="line-height" type="range" min="1" max="3" step="0.1" value="1.5">
+        </div>    
+      </aside>
+      <aside id="tools-img" style="display: none;">
+        <div id="panel-imagen">
+           <h2>Opciones de Imagen</h2>
+            <!-- URL de Imagen -->
+            <div id="image-url">
+                <label for="input-url">URL de Imagen:</label>
+                <input id="input-url" type="url" placeholder="Pega la URL aquí">
+                <button id="btn-aplicar-url" type="button">Aplicar</button>
+            </div>
+
+            <!-- Selector de color -->
+            <div id="image-color">
+                <label for="input-color">Color:</label>
+                <input id="input-color" type="color">
+            </div>
+
+            <!-- Filtros -->
+            <div id="image-filters">
+                <h3>Filtros</h3>
+                <div>
+                <label for="filter-brillo">Brillo:</label>
+                <input id="filter-brillo" type="range" min="0" max="200" value="100">
+                </div>
+                <div>
+                <label for="filter-opacidad">Opacidad:</label>
+                <input id="filter-opacidad" type="range" min="0" max="100" value="100">
+                </div>
+                <div>
+                <label for="filter-contraste">Contraste:</label>
+                <input id="filter-contraste" type="range" min="0" max="200" value="100">
+                </div>
+                <div>
+                <label for="filter-desenfoque">Desenfoque:</label>
+                <input id="filter-desenfoque" type="range" min="0" max="10" step="0.1" value="0">
+                </div>
+                <div>
+                <label for="filter-grises">Escala de Grises:</label>
+                <input id="filter-grises" type="range" min="0" max="100" value="0">
+                </div>
+                <div>
+                <label for="filter-sepia">Sepia:</label>
+                <input id="filter-sepia" type="range" min="0" max="100" value="0">
+                </div>
+                <div>
+                <label for="filter-hue">Hue:</label>
+                <input id="filter-hue" type="range" min="0" max="360" value="0">
+                </div>
+                <div>
+                <label for="filter-saturado">Saturado:</label>
+                <input id="filter-saturado" type="range" min="0" max="200" value="100">
+                </div>
+                <div>
+                <label for="filter-negativo">Negativo:</label>
+                <input id="filter-negativo" type="range" min="0" max="100" value="0">
+            </div>
+          </div>  
+        </aside>     
+      </div>                
+    </section>
+  </main>
+  <script src="/main.js"></script>
+</body>
+</html>
