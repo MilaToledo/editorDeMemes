@@ -13,25 +13,32 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-bottom: 20px; /* Espaciado opcional entre título y barra */
+    margin-bottom: 20px; /* espaciado opcional entre título y barra */
  }
 
  .image-container {
   position: relative;
-  width: 500px; /* Ajusta el tamaño según sea necesario */
-  height: 550px; /* Ajusta el tamaño según sea necesario */
+  width: 500px; /* ajusta el tamaño según sea necesario */
+  height: 550px; /* ajusta el tamaño según sea necesario */
   background-color: black; /* Color de fondo inicial */
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 5px;
-  overflow: hidden; /* Para ocultar cualquier parte de la imagen que sobresalga */
-  margin: 20px auto; /* Centra el contenedor horizontalmente */
+  overflow: hidden; /* para ocultar cualquier parte de la imagen que sobresalga */
+  margin: 20px auto; /* centra el contenedor horizontalmente */
+}
+
+#loaded-image {
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; /* se recorta para llenar el contenedor */
 }
 
 #top-text, #bottom-text {
   position: absolute;
   width: 100%;
+
   color: white;
   pointer-events: none;
 }
@@ -42,7 +49,7 @@ body {
 }
 
  .container-tools {
-  position: relative; /* Necesario para que los elementos hijos se posicionen en relación a este contenedor */
+  position: relative; /* necesario para que los elementos hijos se posicionen en relación a este contenedor */
   padding: 20px;
 }
 
@@ -50,8 +57,8 @@ body {
   position: absolute;
   margin-right: 3%;
   margin-top: 5%;
-  right: 0; /* Alinea a la derecha */
-  top: 0; /* Ajusta según sea necesario */
+  right: 0; /* alinea a la derecha */
+  top: 0; /* ajusta según sea necesario */
   background-color: #34495e;
   padding: 30px;
   border-radius: 10px;
@@ -63,8 +70,8 @@ body {
   position: absolute;
   margin-top: 0%;
   margin-right: 3%;
-  right: 0; /* Alinea a la derecha */
-  top: 100px; /* Ajusta según la altura de #tools-img */
+  right: 0; /* alinea a la derecha */
+  top: 100px; /* ajusta según la altura de #tools-img */
   background-color: #34495e;
   padding: 30px;
   border-radius: 8px;
@@ -72,7 +79,7 @@ body {
   width: 300px;
 }
 
-  /* Barra de opciones */
+  /* barra de opciones */
   #options-bar {
     display: flex;
     align-self: center;
