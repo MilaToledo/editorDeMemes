@@ -35,11 +35,12 @@ body {
   object-fit: cover; /* se recorta para llenar el contenedor */
 }
 
-#top-text, #bottom-text {
+#top-text,
+#bottom-text {
   position: absolute;
-  width: 100%;
-
-  color: white;
+  padding: 0;
+  margin: 0;
+  background-color: rgb(243, 77, 77); /* Color de fondo por defecto */
   pointer-events: none;
 }
 
@@ -77,6 +78,7 @@ body {
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   width: 300px;
+  height: 750px;
 }
 
   /* barra de opciones */
@@ -161,3 +163,32 @@ body {
   #tools-text button:hover {
     background-color: #16a085;
   }
+
+  #outline {
+    margin-top: 4px;
+    font-size: 16px; /* Cambia el tamaño de la fuente */
+    color: white; /* Cambia el color del texto */
+    margin-bottom: 10px; /* Espacio debajo del div */
+    display: block; /* Asegúrate de que el div ocupe toda la línea */
+}
+
+  #outline-options {
+    display: flex;
+    justify-content: center; /* Centra los botones */
+    gap: 10px; /* Espacio entre los botones */
+    margin-top: 10px; /* Espacio superior */
+}
+
+#outline-options button {
+    background-color: #34495e; /* Color de fondo de los botones */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 15px; /* Espaciado interno */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s; /* Transición suave para el color de fondo */
+}
+
+#outline-options button:hover {
+    background-color: #1abc9c; /* Color de fondo al pasar el mouse */
+}

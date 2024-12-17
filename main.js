@@ -14,6 +14,17 @@ const topTextElement = document.getElementById('top-text');
 const bottomTextElement = document.getElementById('bottom-text');
 const fontFamilySelect = document.getElementById('font-family');
 const fontSizeInput = document.getElementById('font-size');
+const alignTextSelect = document.getElementById('alignText');
+const colorTextInput = document.getElementById('colorText');
+const colorBackgroundInput = document.getElementById('colorBackground');
+const noBackgroundButton = document.getElementById('noBackground');
+const outlineNoneButton = document.getElementById('outline-none');
+const outlineLightButton = document.getElementById('outline-light');
+const outlineDarkButton = document.getElementById('outline-dark');
+const letterSpacingInput = document.getElementById('letter-spacing');
+const lineHeightInput = document.getElementById('line-height');
+
+
 
 function applyTextToImage() {
     topTextElement.innerText = textoTop.value; // actualiza el texto superior
@@ -26,12 +37,17 @@ function applyTextToImage() {
     topTextElement.style.fontSize = fontSize; // aplica el tamaño al texto superior
     bottomTextElement.style.fontSize = fontSize; // "" inferior
 
-    // Ajusta el tamaño de la fuente si el texto se sale del contenedor
+    // ajusta el tamaño de la fuente si el texto se sale del contenedor
     adjustFontSizeToFit(topTextElement);
     adjustFontSizeToFit(bottomTextElement);
+
+     // Fijar posiciones de los textos
+    topTextElement.style.top = "0";
+    bottomTextElement.style.top = "auto";
+    bottomTextElement.style.bottom = "0";
 }
 
-// Función para ajustar el tamaño de la fuente si el texto se sale del contenedor
+// función para ajustar el tamaño de la fuente si el texto se sale del contenedor
 function adjustFontSizeToFit(textElement) {
     const containerWidth = document.getElementById('image-container').clientWidth;
     let fontSize = parseInt(textElement.style.fontSize);
@@ -42,6 +58,72 @@ function adjustFontSizeToFit(textElement) {
         textElement.style.fontSize = fontSize + 'px';
     } // aplica la fuente al texto inferior
 }
+
+alignTextSelect.addEventListener('change', function() {
+    const alignment = this.value; // Obtiene el valor seleccionado
+    topTextElement.style.textAlign = alignment; // Aplica la alineación al texto superior
+    bottomTextElement.style.textAlign = alignment; // Aplica la alineación al texto inferior
+});
+
+textoTop.addEventListener('input', function() {
+    applyTextToImage();
+    topTextElement.style.textAlign = alignTextSelect.value; 
+});
+
+textoBottom.addEventListener('input', function() {
+    applyTextToImage();
+    bottomTextElement.style.textAlign = alignTextSelect.value; 
+});
+
+colorTextInput.addEventListener('input', function() {
+    const selectedColor = this.value; //this se refiere al elemento que disparó el evento
+    topTextElement.style.color = selectedColor; 
+    bottomTextElement.style.color = selectedColor; 
+});
+
+// color de fondo texto
+colorBackgroundInput.addEventListener('input', function() {
+    const selectedBackgroundColor = this.value; 
+    topTextElement.style.backgroundColor = selectedBackgroundColor; 
+    bottomTextElement.style.backgroundColor = selectedBackgroundColor; 
+});
+
+// agrega un evento para el botón "Sin Fondo"
+noBackgroundButton.addEventListener('click', function() {
+    topTextElement.style.backgroundColor = 'transparent'; 
+    bottomTextElement.style.backgroundColor = 'transparent'; 
+});
+
+function applyOutline(color) {
+    topTextElement.style.textShadow = color ? `0 0 5px ${color}` : 'none'; // Aplica el contorno
+    bottomTextElement.style.textShadow = color ? `0 0 5px ${color}` : 'none'; // Aplica el contorno
+}
+
+// agrega eventos a los botones
+outlineNoneButton.addEventListener('click', function() {
+    applyOutline(null); // Sin contorno
+});
+
+outlineLightButton.addEventListener('click', function() {
+    applyOutline('white'); // Contorno blanco
+});
+
+outlineDarkButton.addEventListener('click', function() {
+    applyOutline('black'); // Contorno negro
+});
+
+letterSpacingInput.addEventListener('input', function() {
+    const letterSpacingValue = this.value; // Obtiene el valor del rango
+    topTextElement.style.letterSpacing = `${letterSpacingValue}px`; // Aplica el espaciado de letras
+    bottomTextElement.style.letterSpacing = `${letterSpacingValue}px`; // Aplica el espaciado de letras
+});
+
+// Función para actualizar la altura de línea
+lineHeightInput.addEventListener('input', function() {
+    const lineHeightValue = this.value; // Obtiene el valor del rango
+    topTextElement.style.lineHeight = lineHeightValue; // Aplica la altura de línea
+    bottomTextElement.style.lineHeight = lineHeightValue; // Aplica la altura de línea
+});
 
 
 // mostrar la sección de imagen
