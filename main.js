@@ -53,12 +53,12 @@ btnModoOscuro.addEventListener('click', function() {
         document.body.style.color = 'white'; // Cambia el color del texto a blanco
         btnModoOscuro.textContent = 'Modo Claro'; // Cambia el texto del botón
     }
-    isDarkMode = !isDarkMode; // Cambia el estado del modo
+    isDarkMode = !isDarkMode; // es para cambiar el estado del modo
 });
 
 function applyTextToImage() {
     topTextElement.innerText = textoTop.value; // actualiza el texto superior
-    bottomTextElement.innerText = textoBottom.value; // actualiza el texto inferior
+    bottomTextElement.innerText = textoBottom.value;
     const selectedFont = fontFamilySelect.value; // oobtiene la fuente seleccionada
     topTextElement.style.fontFamily = selectedFont; // aplica la fuente al texto superior
     bottomTextElement.style.fontFamily = selectedFont;
@@ -83,7 +83,7 @@ function adjustFontSizeToFit(textElement) {
     const containerWidth = document.getElementById('image-container').clientWidth;
     let fontSize = parseInt(textElement.style.fontSize);
 
-    // Reduce el tamaño de la fuente hasta que el texto quepa en el contenedor
+    // Reduce el tamaño de la fuente hasta que el texto quepa en el contenedor con un bucle
     while (textElement.scrollWidth > containerWidth && fontSize > 10) {
         fontSize--;
         textElement.style.fontSize = fontSize + 'px';
@@ -132,8 +132,8 @@ noBackgroundButton.addEventListener('click', function() {
 });
 
 function applyOutline(color) {
-    topTextElement.style.textShadow = color ? `0 0 5px ${color}` : 'none'; // Aplica el contorno
-    bottomTextElement.style.textShadow = color ? `0 0 5px ${color}` : 'none'; // Aplica el contorno
+    topTextElement.style.textShadow = color ? `0 0 5px ${color}` : 'none'; // aplica el contorno
+    bottomTextElement.style.textShadow = color ? `0 0 5px ${color}` : 'none'; // 
 }
 
 // agrega eventos a los botones
@@ -155,10 +155,10 @@ letterSpacingInput.addEventListener('input', function() {
     bottomTextElement.style.letterSpacing = `${letterSpacingValue}px`; 
 });
 
-// Función para actualizar la altura de línea
+// función para actualizar la altura de línea
 lineHeightInput.addEventListener('input', function() {
     const lineHeightValue = this.value; 
-    topTextElement.style.lineHeight = lineHeightValue; // Aplica la altura de línea
+    topTextElement.style.lineHeight = lineHeightValue; // aplica la altura de línea
     bottomTextElement.style.lineHeight = lineHeightValue; 
 });
 
