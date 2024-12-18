@@ -171,8 +171,8 @@ btnImagen.addEventListener('click', function() {
 
 // sección de texto
 btnTexto.addEventListener('click', function() {
-    toolsText.style.display = 'block'; // muestra la sección de texto
-    toolsImg.style.display = 'none'; // oculta la sección de imagen
+    toolsText.style.display = 'block'; 
+    toolsImg.style.display = 'none'; 
 });
 
 //acordarse importanteeee
