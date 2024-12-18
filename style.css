@@ -20,7 +20,7 @@ body {
   position: relative;
   width: 500px; /* ajusta el tamaño según sea necesario */
   height: 550px; /* ajusta el tamaño según sea necesario */
-  background-color: black; /* Color de fondo inicial */
+  background-color: black; /* Color de fondo inicial */ 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,10 +29,36 @@ body {
   margin: 20px auto; /* centra el contenedor horizontalmente */
 }
 
+#button-container {
+  display: flex; 
+  justify-content: center; 
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+#buttonDescarga {
+  background-color: #4CAF50; 
+  color: white; 
+  border: none;
+  padding: 10px 20px; 
+  text-align: center;
+  text-decoration: none; 
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer; 
+  border-radius: 5px; 
+  transition: background-color 0.3s;
+}
+
+#buttonDescarga:hover {
+  background-color: #45a049;
+}
+
 #loaded-image {
   width: 100%; 
   height: 100%; 
   object-fit: cover; /* se recorta para llenar el contenedor */
+  
 }
 
 #top-text,
@@ -40,8 +66,9 @@ body {
   position: absolute;
   padding: 0;
   margin: 0;
-  background-color: rgb(243, 77, 77); /* Color de fondo por defecto */
+  background-color: rgb(243, 77, 77); 
   pointer-events: none;
+  z-index: 10;
 }
 
  .image-container img {
@@ -54,7 +81,7 @@ body {
   padding: 20px;
 }
 
-#tools-img {
+#tools-img{
   position: absolute;
   margin-right: 3%;
   margin-top: 5%;

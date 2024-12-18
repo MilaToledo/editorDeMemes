@@ -1,4 +1,5 @@
 //constantes
+const btnModoOscuro = document.getElementById('btn-modo-oscuro');
 const btnAplicarUrl = document.getElementById('btn-aplicar-url');
 const inputUrl = document.getElementById('input-url');
 const loadedImage = document.getElementById('loaded-image');
@@ -23,8 +24,37 @@ const outlineLightButton = document.getElementById('outline-light');
 const outlineDarkButton = document.getElementById('outline-dark');
 const letterSpacingInput = document.getElementById('letter-spacing');
 const lineHeightInput = document.getElementById('line-height');
+//const tools img
+const colorInput = document.getElementById('input-color');
+const brightnessInput = document.getElementById('filter-brillo');
+const opacityInput = document.getElementById('filter-opacidad');
+const contrastInput = document.getElementById('filter-contraste');
+const blurInput = document.getElementById('filter-desenfoque');
+const grayscaleInput = document.getElementById('filter-grises');
+const sepiaInput = document.getElementById('filter-sepia');
+const hueInput = document.getElementById('filter-hue');
+const saturadoInput = document.getElementById('filter-saturado');
+const invertInput = document.getElementById('filter-negativo');
+const buttonDescarga = document.getElementById('buttonDescarga');
+const memeCompleto = document.getElementById('image-container');
 
 
+let isDarkMode = true; // Comienza en modo oscuro
+
+btnModoOscuro.addEventListener('click', function() {
+    if (isDarkMode) {
+        // Cambiar a modo claro
+        document.body.style.backgroundColor = 'white'; // Cambia el color de fondo a blanco
+        document.body.style.color = 'black'; // Cambia el color del texto a negro
+        btnModoOscuro.textContent = 'Modo Oscuro'; // Cambia el texto del botón
+    } else {
+        // Cambiar a modo oscuro
+        document.body.style.backgroundColor = '#2c3e50'; // Cambia el color de fondo a oscuro
+        document.body.style.color = 'white'; // Cambia el color del texto a blanco
+        btnModoOscuro.textContent = 'Modo Claro'; // Cambia el texto del botón
+    }
+    isDarkMode = !isDarkMode; // Cambia el estado del modo
+});
 
 function applyTextToImage() {
     topTextElement.innerText = textoTop.value; // actualiza el texto superior
@@ -47,6 +77,7 @@ function applyTextToImage() {
     bottomTextElement.style.bottom = "0";
 }
 
+
 // función para ajustar el tamaño de la fuente si el texto se sale del contenedor
 function adjustFontSizeToFit(textElement) {
     const containerWidth = document.getElementById('image-container').clientWidth;
@@ -59,10 +90,16 @@ function adjustFontSizeToFit(textElement) {
     } // aplica la fuente al texto inferior
 }
 
+textoTop.addEventListener('input', applyTextToImage);
+textoBottom.addEventListener('input', applyTextToImage);
+fontFamilySelect.addEventListener('change', applyTextToImage); 
+fontSizeInput.addEventListener('input', applyTextToImage);
+
+
 alignTextSelect.addEventListener('change', function() {
-    const alignment = this.value; // Obtiene el valor seleccionado
-    topTextElement.style.textAlign = alignment; // Aplica la alineación al texto superior
-    bottomTextElement.style.textAlign = alignment; // Aplica la alineación al texto inferior
+    const alignment = this.value; 
+    topTextElement.style.textAlign = alignment; // aplica la alineación al texto superior
+    bottomTextElement.style.textAlign = alignment;  
 });
 
 textoTop.addEventListener('input', function() {
@@ -101,42 +138,52 @@ function applyOutline(color) {
 
 // agrega eventos a los botones
 outlineNoneButton.addEventListener('click', function() {
-    applyOutline(null); // Sin contorno
+    applyOutline(null); 
 });
 
 outlineLightButton.addEventListener('click', function() {
-    applyOutline('white'); // Contorno blanco
+    applyOutline('white'); 
 });
 
 outlineDarkButton.addEventListener('click', function() {
-    applyOutline('black'); // Contorno negro
+    applyOutline('black'); 
 });
 
 letterSpacingInput.addEventListener('input', function() {
-    const letterSpacingValue = this.value; // Obtiene el valor del rango
-    topTextElement.style.letterSpacing = `${letterSpacingValue}px`; // Aplica el espaciado de letras
-    bottomTextElement.style.letterSpacing = `${letterSpacingValue}px`; // Aplica el espaciado de letras
+    const letterSpacingValue = this.value; 
+    topTextElement.style.letterSpacing = `${letterSpacingValue}px`; // aplica el espaciado de letras
+    bottomTextElement.style.letterSpacing = `${letterSpacingValue}px`; 
 });
 
 // Función para actualizar la altura de línea
 lineHeightInput.addEventListener('input', function() {
-    const lineHeightValue = this.value; // Obtiene el valor del rango
+    const lineHeightValue = this.value; 
     topTextElement.style.lineHeight = lineHeightValue; // Aplica la altura de línea
-    bottomTextElement.style.lineHeight = lineHeightValue; // Aplica la altura de línea
+    bottomTextElement.style.lineHeight = lineHeightValue; 
 });
 
 
-// mostrar la sección de imagen
+// muestr la sección de imagen
 btnImagen.addEventListener('click', function() {
     toolsImg.style.display = 'block'; // muestra la sección de imagen
     toolsText.style.display = 'none'; // sculta la sección de texto
 });
 
-// mostrar la sección de texto
+// sección de texto
 btnTexto.addEventListener('click', function() {
     toolsText.style.display = 'block'; // muestra la sección de texto
     toolsImg.style.display = 'none'; // oculta la sección de imagen
 });
+
+//acordarse importanteeee
+function loadImageFromUrl() {
+    const imageUrl = imageUrlInput.value; // obtiene el URL de la imagen
+    loadedImage.src = imageUrl; // establece la fuente de la imagen
+    loadedImage.onload = function() {
+        loadedImage.style.display = 'block'; // muestra la imagen
+        applyTextToImage(); // aaplica el texto después de cargar la imagen
+    };
+}
 
 btnAplicarUrl.addEventListener('click', function() {
     const imageUrl = inputUrl.value; // obtiene el valor del input
@@ -150,20 +197,75 @@ btnAplicarUrl.addEventListener('click', function() {
     }
 });
 
-//acordarse importanteeee
-function loadImageFromUrl() {
-    const imageUrl = imageUrlInput.value; // obtiene el URL de la imagen
-    loadedImage.src = imageUrl; // establece la fuente de la imagen
-    loadedImage.onload = function() {
-        loadedImage.style.display = 'block'; // muestra la imagen
-        applyTextToImage(); // aaplica el texto después de cargar la imagen
-    };
+//loadImageUrlButton.addEventListener('click', loadImageFromUrl);//
+
+
+//filtros d imagen
+colorInput.addEventListener('input', function() {
+    const selectedColor = this.value;
+    document.getElementById('image-container').style.backgroundColor = selectedColor; 
+});
+
+loadedImage.style.filter = `brightness(${brightnessInput.value}%)`;
+
+// cambios en el control de rango de brillo
+brightnessInput.addEventListener('input', function() {
+    loadedImage.style.filter = `brightness(${this.value}%)`;
+});
+
+loadedImage.style.opacity = opacityInput.value / 100; 
+
+opacityInput.addEventListener('input', function() {
+    loadedImage.style.opacity = this.value / 100; 
+});
+
+loadedImage.style.filter += ` contrast(${contrastInput.value}%)`; 
+
+contrastInput.addEventListener('input', function() {
+    loadedImage.style.filter = `brightness(${brightnessInput.value}%) contrast(${this.value}%)`; 
+});
+
+loadedImage.style.filter += ` blur(${blurInput.value}px)`; 
+
+blurInput.addEventListener('input', function() {
+    loadedImage.style.filter = `brightness(${brightnessInput.value}%) contrast(${contrastInput.value}%) blur(${this.value}px)`; 
+});
+
+loadedImage.style.filter += ` grayscale(${grayscaleInput.value}%)`; 
+
+grayscaleInput.addEventListener('input', function() {
+    loadedImage.style.filter = `brightness(${brightnessInput.value}%) contrast(${contrastInput.value}%) blur(${blurInput.value}px) grayscale(${this.value}%)`;
+});
+
+loadedImage.style.filter += ` sepia(${sepiaInput.value}%)`; 
+
+sepiaInput.addEventListener('input', function() {
+    loadedImage.style.filter = `brightness(${brightnessInput.value}%) contrast(${contrastInput.value}%) blur(${blurInput.value}px) grayscale(${grayscaleInput.value}%) sepia(${this.value}%)`; 
+});
+
+//alternativa a los anteriores para que funcionen 
+function applyHueFilter() {
+    loadedImage.style.filter = `hue-rotate(${hueInput.value}deg)`;
+}
+hueInput.addEventListener('input', applyHueFilter);
+loadedImage.onload = applyHueFilter;
+
+function applySaturationFilter() {
+    loadedImage.style.filter = `saturate(${saturadoInput.value}%)`;
 }
 
-textoTop.addEventListener('input', applyTextToImage);
-textoBottom.addEventListener('input', applyTextToImage);
-fontFamilySelect.addEventListener('change', applyTextToImage); // Evento para cambiar la fuente
-fontSizeInput.addEventListener('input', applyTextToImage);
-loadImageUrlButton.addEventListener('click', loadImageFromUrl); // Evento para cargar imagen desde URL
+saturadoInput.addEventListener('input', applySaturationFilter);
+loadedImage.onload = applySaturationFilter;
 
+function applyInvertFilter() {
+    loadedImage.style.filter = `invert(${invertInput.value}%)`;
+}
 
+invertInput.addEventListener('input', applyInvertFilter);
+loadedImage.onload = applyInvertFilter;
+
+buttonDescarga.addEventListener("click", (e) => {
+    domtoimage.toBlob(memeCompleto).then((blob) => {
+        saveAs(blob, "my-meme.png");
+      }).catch((error)=> {console.log(error)});
+})

@@ -5,12 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Editor de Memes</title>
   <link rel="stylesheet" href="./style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"
+    integrity="sha512-01CJ9/g7e8cUmY0DFTMcUw/ikS799FHiOA0eyHsUWfOetgbx/t6oV4otQ5zXKQyIrQGTHSmRVPIgrgLcZi/WMA=="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"
+    integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ=="
+    crossorigin="anonymous"></script>
 </head>
 <body>
   <header id="header">
     <h1 id="editor-title">Editor de Memes</h1>
   </header>
-
   <section id="options-bar">
     <button id="btn-imagen" type="button">Imagen</button>
     <button id="btn-texto" type="button">Texto</button>
@@ -23,6 +28,9 @@
       <img id="loaded-image" src="" alt="Imagen cargada" style="display: none;">
       <div id="top-text" style="position: absolute; top: 10px; width: 100%; color: white; pointer-events: none;"></div>
       <div id="bottom-text" style="position: absolute; bottom: 10px; width: 100%; color: white; pointer-events: none;"></div>
+    </div>
+    <div id="button-container">
+      <button id="buttonDescarga" type="button">Descargar Meme</button>
     </div>
 
     <!-- brra de opciones -->
@@ -79,7 +87,7 @@
               <!-- espaciado -->
             <label for="letter-spacing">Espaciado de Letras:</label>
             <input id="letter-spacing" type="range" min="0" max="20" value="1">
-            
+
             <label for="line-height">Altura de Línea:</label>
             <input id="line-height" type="range" min="1" max="3" step="0.1" value="1.5">
         </div>    
@@ -99,45 +107,46 @@
                 <label for="input-color">Color:</label>
                 <input id="input-color" type="color">
             </div>
-
+            
             <!-- filtros -->
             <div id="image-filters">
                 <h3>Filtros</h3>
                 <div>
-                <label for="filter-brillo">Brillo:</label>
-                <input id="filter-brillo" type="range" min="0" max="200" value="100">
+                  <label for="filter-brillo">Brillo:</label>
+                  <input id="filter-brillo" type="range" min="0" max="200" value="100">
                 </div>
                 <div>
-                <label for="filter-opacidad">Opacidad:</label>
-                <input id="filter-opacidad" type="range" min="0" max="100" value="100">
+                  <label for="filter-opacidad">Opacidad:</label>
+                  <input id="filter-opacidad" type="range" min="0" max="100" value="100">
                 </div>
                 <div>
-                <label for="filter-contraste">Contraste:</label>
-                <input id="filter-contraste" type="range" min="0" max="200" value="100">
+                  <label for="filter-contraste">Contraste:</label>
+                  <input id="filter-contraste" type="range" min="0" max="200" value="100">
                 </div>
                 <div>
-                <label for="filter-desenfoque">Desenfoque:</label>
-                <input id="filter-desenfoque" type="range" min="0" max="10" step="0.1" value="0">
+                  <label for="filter-desenfoque">Desenfoque:</label>
+                  <input id="filter-desenfoque" type="range" min="0" max="10" step="0.1" value="0">
                 </div>
                 <div>
-                <label for="filter-grises">Escala de Grises:</label>
-                <input id="filter-grises" type="range" min="0" max="100" value="0">
+                  <label for="filter-grises">Escala de Grises:</label>
+                  <input id="filter-grises" type="range" min="0" max="100" value="0">
                 </div>
                 <div>
-                <label for="filter-sepia">Sepia:</label>
-                <input id="filter-sepia" type="range" min="0" max="100" value="0">
+                  <label for="filter-sepia">Sepia:</label>
+                  <input id="filter-sepia" type="range" min="0" max="100" value="0">
                 </div>
                 <div>
-                <label for="filter-hue">Hue:</label>
-                <input id="filter-hue" type="range" min="0" max="360" value="0">
+                  <label for="filter-hue">Hue:</label>
+                  <input id="filter-hue" type="range" min="0" max="360" value="0">
                 </div>
                 <div>
-                <label for="filter-saturado">Saturado:</label>
-                <input id="filter-saturado" type="range" min="0" max="200" value="100">
+                  <label for="filter-saturado">Saturado:</label>
+                  <input id="filter-saturado" type="range" min="0" max="200" value="100">
                 </div>
                 <div>
-                <label for="filter-negativo">Negativo:</label>
-                <input id="filter-negativo" type="range" min="0" max="100" value="0">
+                  <label for="filter-negativo">Negativo:</label>
+                  <input id="filter-negativo" type="range" min="0" max="100" value="0">
+                </div>  
             </div>
           </div>  
         </aside>     
